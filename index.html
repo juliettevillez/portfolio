@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#eaf4f0">
+  <meta name="description" content="Portfolio professionnel de Juliette Villez, étudiante en formation ASV.">
+  <title>Juliette Villez | Portfolio ASV</title>
+  <style>
+    :root {
+      --ink: #263d3a;
+      --muted: #637873;
+      --teal: #477f75;
+      --teal-dark: #32665d;
+      --mint: #e8f3ee;
+      --mint-2: #f4f8f5;
+      --sand: #f2ece1;
+      --white: #fff;
+      --line: #dce8e2;
+      --shadow: 0 16px 42px rgba(38, 61, 58, .08);
+      --radius: 22px;
+      --max: 1120px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: #fbfcfa;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.65;
+    }
+    a { color: inherit; }
+    img { display: block; max-width: 100%; }
+    .container { width: min(var(--max), calc(100% - 40px)); margin-inline: auto; }
+    .skip-link {
+      position: absolute; left: 12px; top: -60px; z-index: 100;
+      padding: 10px 14px; background: white; border-radius: 8px;
+    }
+    .skip-link:focus { top: 12px; }
+    header {
+      position: sticky; top: 0; z-index: 20;
+      background: rgba(251, 252, 250, .92);
+      border-bottom: 1px solid rgba(220, 232, 226, .8);
+      backdrop-filter: blur(14px);
+    }
+    .nav-wrap { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { text-decoration: none; font-weight: 800; letter-spacing: .02em; font-size: 1.03rem; }
+    .brand span { color: var(--teal); }
+    nav { display: flex; align-items: center; gap: 25px; }
+    nav a { text-decoration: none; font-size: .92rem; color: var(--muted); font-weight: 600; }
+    nav a:hover, nav a:focus-visible { color: var(--teal-dark); }
+    .menu-toggle {
+      display: none; border: 1px solid var(--line); background: white; color: var(--ink);
+      border-radius: 12px; padding: 9px 12px; font: inherit; cursor: pointer;
+    }
+    .hero { padding: 76px 0 82px; background: linear-gradient(135deg, #f3f8f4 0%, #e8f3ee 58%, #f4eee4 100%); }
+    .hero-grid { display: grid; grid-template-columns: 1.08fr .92fr; align-items: center; gap: 58px; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 9px; margin: 0 0 17px;
+      color: var(--teal-dark); text-transform: uppercase; letter-spacing: .13em;
+      font-size: .75rem; font-weight: 800;
+    }
+    .eyebrow::before { content: ""; width: 25px; height: 2px; background: var(--teal); }
+    h1 { margin: 0; font-size: clamp(2.7rem, 6vw, 5rem); line-height: 1.04; letter-spacing: -.055em; }
+    h1 span { color: var(--teal); }
+    .hero-lead { max-width: 570px; margin: 23px 0 28px; color: #526963; font-size: 1.12rem; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .button {
+      display: inline-flex; justify-content: center; align-items: center; gap: 8px;
+      min-height: 48px; padding: 11px 19px; border-radius: 999px; text-decoration: none;
+      font-weight: 700; border: 1px solid var(--teal); transition: .2s ease;
+    }
+    .button.primary { color: white; background: var(--teal); }
+    .button.primary:hover { background: var(--teal-dark); transform: translateY(-2px); }
+    .button.secondary { color: var(--teal-dark); background: rgba(255,255,255,.6); }
+    .button.secondary:hover { background: white; }
+    .hero-visual { position: relative; }
+    .hero-photo {
+      width: 100%; aspect-ratio: 4 / 4.25; object-fit: cover; border-radius: 46% 46% 25px 25px;
+      background: #dcebe3; box-shadow: var(--shadow);
+    }
+    .photo-note {
+      position: absolute; left: -25px; bottom: 25px; max-width: 220px; padding: 15px 18px;
+      border-radius: 16px; background: white; box-shadow: var(--shadow); color: var(--muted); font-size: .88rem;
+    }
+    .photo-note strong { display: block; color: var(--ink); font-size: 1rem; }
+    section { padding: 82px 0; scroll-margin-top: 78px; }
+    .section-head { max-width: 680px; margin-bottom: 35px; }
+    .section-kicker { margin: 0 0 8px; color: var(--teal); font-size: .76rem; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
+    h2 { margin: 0; font-size: clamp(2rem, 4vw, 3rem); line-height: 1.15; letter-spacing: -.04em; }
+    .section-intro { color: var(--muted); margin: 14px 0 0; }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .panel { background: white; border: 1px solid var(--line); border-radius: var(--radius); padding: 30px; box-shadow: 0 8px 28px rgba(38,61,58,.035); }
+    .panel h3 { margin: 0 0 12px; font-size: 1.2rem; }
+    .panel p { margin: 0; color: var(--muted); }
+    .quality-list { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 21px; }
+    .chip { padding: 7px 12px; border-radius: 999px; background: var(--mint); color: var(--teal-dark); font-size: .86rem; font-weight: 650; }
+    .fact-row { display: flex; gap: 12px; align-items: flex-start; margin-top: 17px; color: var(--muted); }
+    .fact-icon { flex: 0 0 34px; height: 34px; display: grid; place-items: center; border-radius: 11px; background: var(--sand); color: var(--teal-dark); font-weight: 800; }
+    .skills-section { background: var(--mint-2); }
+    .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .skill-card { background: white; padding: 25px; border: 1px solid var(--line); border-radius: 18px; }
+    .skill-symbol { width: 43px; height: 43px; display: grid; place-items: center; border-radius: 14px; background: var(--mint); color: var(--teal-dark); font-size: 1.15rem; font-weight: 800; }
+    .skill-card h3 { margin: 16px 0 8px; font-size: 1.05rem; }
+    .skill-card p { margin: 0; color: var(--muted); font-size: .94rem; }
+    .notice { margin-top: 20px; padding: 15px 18px; background: #f5efe5; border-radius: 14px; color: #6e6557; font-size: .9rem; }
+    .timeline { display: grid; gap: 14px; }
+    .timeline-item { display: grid; grid-template-columns: 180px 1fr; gap: 22px; padding: 22px 24px; border: 1px solid var(--line); background: white; border-radius: 17px; }
+    .timeline-date { color: var(--teal-dark); font-size: .9rem; font-weight: 800; }
+    .timeline-item h3 { margin: 0 0 5px; font-size: 1.05rem; }
+    .timeline-item p { margin: 0; color: var(--muted); font-size: .94rem; }
+    .gallery-section { background: #f7f8f4; }
+    .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .work-card { overflow: hidden; background: white; border: 1px solid var(--line); border-radius: 18px; }
+    .work-card img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; background: #e6eee9; }
+    .work-copy { padding: 20px; }
+    .work-copy .work-date { color: var(--teal); font-size: .78rem; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; }
+    .work-copy h3 { margin: 7px 0 7px; font-size: 1.08rem; }
+    .work-copy p { margin: 0; color: var(--muted); font-size: .92rem; }
+    .contact-section { background: linear-gradient(135deg, #eaf4ef, #f5f0e7); }
+    .contact-card { display: grid; grid-template-columns: 1fr 1fr; gap: 35px; padding: 36px; background: white; border: 1px solid var(--line); border-radius: 24px; box-shadow: var(--shadow); }
+    .contact-card p { color: var(--muted); }
+    .contact-details { display: grid; gap: 14px; align-content: center; }
+    .contact-line { display: flex; gap: 13px; align-items: center; padding: 13px 15px; border-radius: 13px; background: var(--mint-2); }
+    .contact-line small { display: block; color: var(--muted); }
+    .contact-line a { color: var(--teal-dark); font-weight: 700; text-decoration: none; overflow-wrap: anywhere; }
+    footer { padding: 25px 0; color: var(--muted); font-size: .85rem; text-align: center; background: #fbfcfa; }
+    :focus-visible { outline: 3px solid #9bc9ba; outline-offset: 3px; }
+    @media (max-width: 800px) {
+      .hero { padding: 55px 0 65px; }
+      .hero-grid { grid-template-columns: 1fr .8fr; gap: 28px; }
+      .skills-grid, .gallery { grid-template-columns: repeat(2, 1fr); }
+      .photo-note { left: -12px; }
+    }
+    @media (max-width: 640px) {
+      .container { width: min(100% - 30px, var(--max)); }
+      .nav-wrap { min-height: 64px; }
+      .menu-toggle { display: inline-flex; }
+      nav {
+        display: none; position: absolute; top: 64px; left: 0; right: 0; padding: 16px 22px 20px;
+        flex-direction: column; align-items: stretch; gap: 0; background: #fbfcfa;
+        border-bottom: 1px solid var(--line);
+      }
+      nav.open { display: flex; }
+      nav a { padding: 11px 0; }
+      .hero-grid, .about-grid, .contact-card { grid-template-columns: 1fr; }
+      .hero-grid { gap: 36px; }
+      .hero-visual { width: min(82%, 360px); margin: 0 auto; }
+      .hero-photo { aspect-ratio: 1 / 1.05; }
+      .photo-note { left: -18px; bottom: 15px; }
+      section { padding: 64px 0; }
+      .skills-grid, .gallery { grid-template-columns: 1fr; }
+      .timeline-item { grid-template-columns: 1fr; gap: 5px; padding: 19px; }
+      .contact-card { padding: 25px; gap: 15px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+  <header>
+    <div class="container nav-wrap">
+      <a class="brand" href="#accueil">JULIETTE <span>VILLEZ</span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="navigation">Menu</button>
+      <nav id="navigation" aria-label="Navigation principale">
+        <a href="#profil">Mon profil</a>
+        <a href="#competences">Compétences</a>
+        <a href="#parcours">Parcours</a>
+        <a href="#realisations">Réalisations</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenu">
+    <section class="hero" id="accueil">
+      <div class="container hero-grid">
+        <div>
+          <p class="eyebrow">Portfolio professionnel</p>
+          <h1>Juliette<br><span>VILLEZ</span></h1>
+          <p class="hero-lead">Étudiante en formation ASV, je souhaite développer mon parcours dans le secteur de la santé et du soin animal.</p>
+          <div class="actions">
+            <a class="button primary" href="#parcours">Découvrir mon parcours <span aria-hidden="true">↗</span></a>
+            <a class="button secondary" href="#contact">Me contacter</a>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <!-- Remplacez accueil.jpg par le nom exact de votre photo dans le dossier img. -->
+          <img class="hero-photo" src="img/accueil.jpg" alt="Photo de présentation de Juliette Villez"
+               onerror="this.style.display='none'; this.nextElementSibling.hidden=false;">
+          <div class="hero-photo" hidden role="img" aria-label="Emplacement réservé à votre photo de présentation" style="display:grid;place-items:center;padding:28px;text-align:center;color:#477f75;">
+            <div><strong>Votre photo</strong><br><small>Ajoutez votre image dans le dossier <code>img</code>.</small></div>
+          </div>
+          <div class="photo-note"><strong>À l’écoute et minutieuse</strong>Un parcours guidé par l’envie d’apprendre et le travail en équipe.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="profil">
+      <div class="container">
+        <div class="section-head">
+          <p class="section-kicker">Qui suis-je ?</p>
+          <h2>Un profil impliqué et polyvalent</h2>
+          <p class="section-intro">Quelques repères sur ma personnalité, mes objectifs et mon parcours.</p>
+        </div>
+        <div class="about-grid">
+          <article class="panel">
+            <h3>Mon profil</h3>
+            <p>Étudiante motivée, minutieuse et autonome, je suis à l’écoute et sais travailler en équipe. Titulaire du permis B.</p>
+            <div class="quality-list">
+              <span class="chip">Motivée</span><span class="chip">Minutieuse</span>
+              <span class="chip">Autonome</span><span class="chip">À l’écoute</span>
+              <span class="chip">Esprit d’équipe</span>
+            </div>
+          </article>
+          <article class="panel">
+            <h3>Mon objectif professionnel</h3>
+            <p>Présenter mon parcours et poursuivre mon évolution dans le domaine de l’assistance vétérinaire. Cette rubrique pourra être précisée selon le poste ou le stage recherché.</p>
+            <div class="fact-row"><span class="fact-icon">B</span><span><strong>Mobilité</strong><br>Permis B</span></div>
+            <div class="fact-row"><span class="fact-icon">EN</span><span><strong>Anglais</strong><br>Étudié depuis la 6e</span></div>
+            <div class="fact-row"><span class="fact-icon">ES</span><span><strong>Espagnol</strong><br>Étudié depuis la 5e</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="skills-section" id="competences">
+      <div class="container">
+        <div class="section-head">
+          <p class="section-kicker">Savoir-faire</p>
+          <h2>Compétences & outils</h2>
+          <p class="section-intro">Les informations communiquées ne détaillent pas encore les compétences techniques, outils ou protocoles pratiqués. Ces espaces sont volontairement prévus pour être complétés.</p>
+        </div>
+        <div class="skills-grid">
+          <article class="skill-card">
+            <div class="skill-symbol" aria-hidden="true">✚</div>
+            <h3>Compétences techniques</h3>
+            <p>À compléter avec les gestes et tâches effectivement appris ou réalisés, en précisant le contexte et le niveau d’autonomie.</p>
+          </article>
+          <article class="skill-card">
+            <div class="skill-symbol" aria-hidden="true">⌘</div>
+            <h3>Outils & logiciels</h3>
+            <p>À compléter avec les logiciels, équipements et outils réellement utilisés pendant la formation ou les stages.</p>
+          </article>
+          <article class="skill-card">
+            <div class="skill-symbol" aria-hidden="true">♡</div>
+            <h3>Protocoles & prévention</h3>
+            <p>À compléter uniquement avec les protocoles étudiés ou appliqués, en indiquant le cadre d’intervention et le rôle tenu.</p>
+          </article>
+        </div>
+        <p class="notice">Les compétences et protocoles ne sont pas présumés : ajoutez ici uniquement les éléments que vous pouvez confirmer. Les actes relevant du vétérinaire ne sont pas présentés comme faisant partie de vos missions.</p>
+      </div>
+    </section>
+
+    <section id="parcours">
+      <div class="container">
+        <div class="section-head">
+          <p class="section-kicker">Mon parcours</p>
+          <h2>Expériences & formations</h2>
+          <p class="section-intro">Un parcours varié, avec une première immersion dans le milieu vétérinaire et des expériences dans différents secteurs.</p>
+        </div>
+        <div class="timeline">
+          <article class="timeline-item"><div class="timeline-date">8 au 19 septembre 2025</div><div><h3>Stage ASV vétérinaire · Univet, Coursan</h3><p>Stage en structure vétérinaire. Missions et activités réalisées : à préciser.</p></div></article>
+          <article class="timeline-item"><div class="timeline-date">Juillet à août 2025</div><div><h3>Stationnaire de compagnie · Centre de secours, Saint-Pons-de-Thomières</h3><p>Expérience professionnelle.</p></div></article>
+          <article class="timeline-item"><div class="timeline-date">Juillet à août 2025</div><div><h3>Mise en rayon · Supérette, La Salvetat-sur-Agout</h3><p>Expérience professionnelle.</p></div></article>
+          <article class="timeline-item"><div class="timeline-date">Octobre à juin 2024 et 2025</div><div><h3>Community Manager · Boutique de prêt-à-porter</h3><p>Expérience en communication digitale.</p></div></article>
+          <article class="timeline-item"><div class="timeline-date">Juillet à août 2024</div><div><h3>Vente saisonnière · Boulangerie, La Salvetat-sur-Agout</h3><p>Expérience professionnelle.</p></div></article>
+          <article class="timeline-item"><div class="timeline-date">Juillet à août 2023 et 2024</div><div><h3>Agent d’entretien saisonnier · Camping du lac du Laouzas</h3><p>Expérience professionnelle.</p></div></article>
+          <article class="timeline-item"><div class="timeline-date">Janvier 2023</div><div><h3>Stage de vente · Prêt-à-porter, Lacaune</h3><p>Stage professionnel.</p></div></article>
+          <article class="timeline-item"><div class="timeline-date">Juillet à août 2022</div><div><h3>Vente saisonnière · Charcuterie, La Salvetat-sur-Agout</h3><p>Expérience professionnelle.</p></div></article>
+          <article class="timeline-item"><div class="timeline-date">Décembre 2021</div><div><h3>Stage d’assistante vétérinaire · Saint-Pons-de-Thomières</h3><p>Stage de découverte du milieu vétérinaire. Missions réalisées : à préciser.</p></div></article>
+        </div>
+        <div class="section-head" style="margin:48px 0 22px;">
+          <p class="section-kicker">Formation</p>
+          <h2>Études & certifications</h2>
+        </div>
+        <div class="timeline">
+          <article class="timeline-item"><div class="timeline-date">2024–2025</div><div><h3>Première année de BTS Communication</h3><p>Groupe Alternance, Narbonne (11).</p></div></article>
+          <article class="timeline-item"><div class="timeline-date">2024</div><div><h3>Formation PSC1</h3><p>Castres (81).</p></div></article>
+          <article class="timeline-item"><div class="timeline-date">2022–2024</div><div><h3>Baccalauréat STMG</h3><p>Lycée de la Borde Basse, Castres (81).</p></div></article>
+          <article class="timeline-item"><div class="timeline-date">2021–2022</div><div><h3>Seconde générale et technologique</h3><p>Lycée de la Borde Basse, Castres (81).</p></div></article>
+          <article class="timeline-item"><div class="timeline-date">2020–2021</div><div><h3>Brevet des collèges</h3><p>Collège du Montalet, Lacaune (81).</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="gallery-section" id="realisations">
+      <div class="container">
+        <div class="section-head">
+          <p class="section-kicker">En images</p>
+          <h2>Réalisations & expériences</h2>
+          <p class="section-intro">Une sélection à personnaliser avec des photos autorisées et des descriptions factuelles de vos stages, expériences ou projets.</p>
+        </div>
+        <div class="gallery" id="gallery" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+      <div class="container">
+        <div class="contact-card">
+          <div>
+            <p class="section-kicker">Échangeons</p>
+            <h2>Me contacter</h2>
+            <p>Pour une opportunité de stage, une candidature ou un échange professionnel, vous pouvez me joindre par téléphone ou par e-mail.</p>
+            <p><strong>Localisation :</strong> Narbonne</p>
+            <p><strong>Centres d’intérêt :</strong> photographie et animaux.</p>
+          </div>
+          <div class="contact-details">
+            <div class="contact-line"><span class="fact-icon" aria-hidden="true">☎</span><div><small>Téléphone</small><a href="tel:+33789955633">07 89 95 56 33</a></div></div>
+            <div class="contact-line"><span class="fact-icon" aria-hidden="true">@</span><div><small>E-mail</small><a href="mailto:juliettevillez34@gmail.com">juliettevillez34@gmail.com</a></div></div>
+            <div class="contact-line"><span class="fact-icon" aria-hidden="true">⌖</span><div><small>Ville</small><strong>Narbonne</strong></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="container">© <span id="year"></span> Juliette Villez · Portfolio professionnel</div></footer>
+
+  <script>
+    // Tableau unique des réalisations : modifiez les titres, descriptions, dates et chemins d'images ici.
+    // Les noms d'images ci-dessous sont des exemples à remplacer par les noms exacts de vos fichiers.
+    const realisations = [
+      {
+        titre: "Stage ASV chez Univet",
+        date: "Septembre 2025",
+        description: "Stage réalisé du 8 au 19 septembre à Coursan. Ajoutez ici les missions observées ou effectuées, sans attribuer d’actes réservés au vétérinaire.",
+        image: "img/stage-univet.jpg",
+        alt: "Photographie du stage ASV chez Univet"
+      },
+      {
+        titre: "Stage en milieu vétérinaire",
+        date: "Décembre 2021",
+        description: "Stage d’assistante vétérinaire à Saint-Pons-de-Thomières. Décrivez ici les découvertes et activités réellement réalisées.",
+        image: "img/stage-veterinaire.jpg",
+        alt: "Photographie du stage en milieu vétérinaire"
+      },
+      {
+        titre: "Projet de communication",
+        date: "2024–2025",
+        description: "Expérience de Community Manager pour une boutique de prêt-à-porter. Ajoutez un exemple de contenu ou de projet si vous pouvez le partager.",
+        image: "img/projet-communication.jpg",
+        alt: "Exemple de réalisation en communication"
+      }
+    ];
+
+    const gallery = document.getElementById("gallery");
+    realisations.forEach((item) => {
+      const card = document.createElement("article");
+      card.className = "work-card";
+
+      const img = document.createElement("img");
+      img.src = item.image;
+      img.alt = item.alt;
+      img.loading = "lazy";
+      img.onerror = () => {
+        img.style.display = "none";
+      };
+
+      const copy = document.createElement("div");
+      copy.className = "work-copy";
+
+      const date = document.createElement("div");
+      date.className = "work-date";
+      date.textContent = item.date;
+
+      const title = document.createElement("h3");
+      title.textContent = item.titre;
+
+      const description = document.createElement("p");
+      description.textContent = item.description;
+
+      copy.append(date, title, description);
+      card.append(img, copy);
+      gallery.append(card);
+    });
+
+    const menuButton = document.querySelector(".menu-toggle");
+    const navigation = document.getElementById("navigation");
+    menuButton.addEventListener("click", () => {
+      const isOpen = navigation.classList.toggle("open");
+      menuButton.setAttribute("aria-expanded", String(isOpen));
+    });
+    navigation.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        navigation.classList.remove("open");
+        menuButton.setAttribute("aria-expanded", "false");
+      });
+    });
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
